@@ -1,0 +1,14 @@
+FROM python:3.11.5
+ENV PYTHONUNBUFFERED=1
+# ENV PYTHONDONTWRITEBYTECODE=1
+# RUN mkdir ./myapp
+WORKDIR /code
+COPY requirments.txt .
+RUN pip install -r requirments.txt
+COPY . .
+EXPOSE 8000
+
+CMD ["python","manage.py","runserver","127.0.0.1:8000"]
+ENTRYPOINT [ "/app.django.sh" ]
+
+
